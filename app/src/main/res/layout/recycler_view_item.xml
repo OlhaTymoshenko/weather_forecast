@@ -11,50 +11,56 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        app:cardBackgroundColor="#03a9f4"
+        app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="6dp">
+
         <TextView
             android:id="@+id/card_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            tools:text="San 12 Match"
-            android:textSize="16sp"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_marginRight="@dimen/common_margin"
+            android:layout_marginTop="@dimen/common_margin"
             android:fontFamily="sans-serif-light"
-            android:textColor="@android:color/white"/>
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            tools:text="San 12 March"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="5">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/card_temp_max"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal|bottom"
-                    tools:text="+14°"
-                    android:textSize="30sp"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@color/colorText"
+                    android:textSize="30sp"
+                    tools:text="+14°"/>
+
                 <TextView
                     android:id="@+id/card_temp_min"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal|top"
-                    tools:text="+5°"
-                    android:textSize="24sp"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#e0e0e0"/>
+                    android:textColor="#e0e0e0"
+                    android:textSize="24sp"
+                    tools:text="+5°"/>
             </LinearLayout>
+
             <ImageView
                 android:id="@+id/card_image"
                 android:layout_width="0dp"

@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiServiceGenerator {
 
-    public static final String API_BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    private static final String API_BASE_URL = "http://api.openweathermap.org/data/2.5/";
 
     public <S> S createService(Class<S> sClass) {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
@@ -43,7 +43,6 @@ public class ApiServiceGenerator {
         });
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClientBuilder.addInterceptor(loggingInterceptor);
-
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(httpClientBuilder.build())
