@@ -8,12 +8,10 @@
     android:padding="@dimen/activity_margin"
     tools:context="com.amicablesoft.weatherforecast.MainActivity">
 
-    <Button
-        android:id="@+id/button_search"
-        android:layout_width="wrap_content"
+    <fragment
+        android:id="@+id/place_autocomplete_fragment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/label_search"
-        style="@style/Button"/>
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
 
 </FrameLayout>
