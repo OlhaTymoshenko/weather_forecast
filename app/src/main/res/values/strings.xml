@@ -2,6 +2,7 @@
     <string name="app_name">Weather Forecast</string>
     <string name="title_activity_maps">Map</string>
     <string name="label_show">Show on map</string>
-    <string name="error_message">Fail to load forecast</string>
-
+    <string name="error_load_forecast">Fail to load forecast</string>
+    <string name="error_load_places">Fail to load places</string>
+    <string name="error_connection">Connection error</string>
 </resources>

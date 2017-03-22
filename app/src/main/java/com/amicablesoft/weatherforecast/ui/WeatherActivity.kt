@@ -16,8 +16,6 @@ import com.amicablesoft.weatherforecast.model.Forecast
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-
-
 /**
  * Created by olha on 3/21/17.
  */
@@ -81,9 +79,8 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
     }
 
     override fun showError(error: Throwable) {
-        Snackbar.make(findViewById(R.id.activity_weather), R.string.error_message, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(findViewById(R.id.activity_weather), R.string.error_load_forecast, Snackbar.LENGTH_LONG).show()
     }
-
 
 }
 

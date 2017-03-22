@@ -30,12 +30,11 @@
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="com.amicablesoft.weatherforecast.ui.MapsActivity"
+        android:name=".ui.MapsActivity"
         android:label="@string/title_activity_maps"
         android:parentActivityName=".ui.WeatherActivity"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
-
     </activity>
 
     <meta-data
