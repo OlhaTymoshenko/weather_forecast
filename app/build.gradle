@@ -12,6 +12,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        debug {
+            storeFile file("../keys/debug.keystore")
+        }
+        release {
+            storeFile file("../keys/release.keystore")
+            storePassword "secret"
+            keyAlias "weather_forecast"
+            keyPassword "secret"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
