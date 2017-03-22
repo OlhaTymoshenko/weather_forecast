@@ -1,4 +1,4 @@
-package com.amicablesoft.weatherforecast;
+package com.amicablesoft.weatherforecast.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amicablesoft.weatherforecast.R;
 import com.amicablesoft.weatherforecast.model.Forecast;
 import com.squareup.picasso.Picasso;
 
@@ -61,7 +62,7 @@ class WeatherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     private String formatTemp(int temp) {
-        return (temp > 0 ? "+" : "-") + String.valueOf(temp);
+        return (temp > 0 ? "+" + String.valueOf(temp): String.valueOf(temp));
     }
 
     private class WeatherViewHolder extends RecyclerView.ViewHolder {

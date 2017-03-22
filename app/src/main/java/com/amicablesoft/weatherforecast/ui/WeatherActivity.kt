@@ -1,5 +1,6 @@
-package com.amicablesoft.weatherforecast
+package com.amicablesoft.weatherforecast.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -7,10 +8,15 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
+import com.amicablesoft.weatherforecast.R
+import com.amicablesoft.weatherforecast.dal.ForecastRepository
 import com.amicablesoft.weatherforecast.model.Forecast
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+
+
 
 /**
  * Created by olha on 3/21/17.
@@ -19,6 +25,9 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
 
     private lateinit var adapter: WeatherAdapter
     private lateinit var presenter: WeatherPresenter
+    private var city: String? = null
+    private var latitude = 0.0
+    private var longitude = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +37,7 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
-        val city = intent.getStringExtra("city")
+        city = intent.getStringExtra("city")
         supportActionBar?.title = city
 
         val gridLayoutManager = GridLayoutManager(this, 2)
@@ -37,11 +46,17 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
         adapter = WeatherAdapter(this)
         recyclerView.adapter = adapter
 
-        val latitude = intent.getDoubleExtra("latitude", 0.0)
-        val longitude = intent.getDoubleExtra("longitude", 0.0)
+        latitude = intent.getDoubleExtra("latitude", 0.0)
+        longitude = intent.getDoubleExtra("longitude", 0.0)
 
         presenter = WeatherPresenter(this, latitude, longitude)
         presenter.onCreate()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.weather_menu, menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -49,6 +64,13 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
             R.id.home -> {
                 finish()
                 return true
+            }
+            R.id.action_show_on_map -> {
+                val intent = Intent(this@WeatherActivity, MapsActivity::class.java)
+                intent.putExtra("city", city)
+                intent.putExtra("latitude", latitude)
+                intent.putExtra("longitude", longitude)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -72,7 +94,7 @@ interface WeatherView {
 
 class WeatherPresenter(val view: WeatherView, val latitude: Double, val longitude: Double){
 
-    val repository:ForecastRepository = ForecastRepository()
+    val repository: ForecastRepository = ForecastRepository()
 
     fun onCreate() {
         repository.fetchForecastFor(latitude, longitude)

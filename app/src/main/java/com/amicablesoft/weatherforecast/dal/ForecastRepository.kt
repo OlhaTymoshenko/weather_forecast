@@ -1,4 +1,4 @@
-package com.amicablesoft.weatherforecast
+package com.amicablesoft.weatherforecast.dal
 
 import com.amicablesoft.weatherforecast.api.ApiService
 import com.amicablesoft.weatherforecast.api.ApiServiceGenerator
